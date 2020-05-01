@@ -47,6 +47,14 @@ function showMilli(){
     data = data.filter(user => user.money > 1000000)
     updateDOM()
 }
+
+// calculate total wealth
+function calculateWealth(){
+    const wealth = data.reduce((acc, user) => (acc += user.money), 0)
+    const wealthEle= document.createElement('div')
+    wealthEle.innerHTML = `<h3>Total Wealth: <strong>${formatMoney(wealth)}</strong></h3>`
+    main.appendChild(wealthEle)
+}
 // add Data
 function addData(obj){
     data.push(obj)
@@ -76,3 +84,4 @@ doublebtn.addEventListener('click', doubleMoney)
 sortRichbtn.addEventListener('click', sortByRich)
 sortPoorbtn.addEventListener('click', sortByPoor)
 showMillibtn.addEventListener('click', showMilli)
+calculateWealthbtn.addEventListener('click', calculateWealth)
