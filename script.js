@@ -2,7 +2,8 @@ main = document.getElementById('main')
 addUserbtn = document.getElementById('add-user')
 doublebtn = document.getElementById('double')
 showMillibtn = document.getElementById('showmillionaires')
-sortbtn = document.getElementById('sort')
+sortRichbtn = document.getElementById('sort-rich')
+sortPoorbtn = document.getElementById('sort-poor')
 calculateWealthbtn = document.getElementById('calculate-wealth')
 
 // put all the people in an array
@@ -32,9 +33,13 @@ function doubleMoney(){
     updateDOM()
 }
 
-// Sort users by richest
+// Sort users by richest & poorest
 function sortByRich(){
     data.sort((a,b) => b.money - a.money)
+    updateDOM()
+}
+function sortByPoor(){
+    data.sort((a,b) => a.money - b.money)
     updateDOM()
 }
 // Filter only millionaires
@@ -68,5 +73,6 @@ function formatMoney(number){
 // EventListeners
 addUserbtn.addEventListener('click', getRandomUser)
 doublebtn.addEventListener('click', doubleMoney)
-sortbtn.addEventListener('click', sortByRich)
+sortRichbtn.addEventListener('click', sortByRich)
+sortPoorbtn.addEventListener('click', sortByPoor)
 showMillibtn.addEventListener('click', showMilli)
